@@ -24,7 +24,8 @@ public class ConfiguracionCORS {
             "http://localhost:3000",    // React
             "http://localhost:4200",    // Angular
             "http://localhost:5173",    // Vite
-            "http://localhost:8081"     // Otro puerto
+            "http://localhost:8081",    // Otro puerto
+            "https://frontend-melamina.vercel.app"
         ));
         
         // Métodos HTTP permitidos
