@@ -12,7 +12,7 @@ RUN chmod +x mvnw
 RUN ./mvnw -q clean package -DskipTests
 
 # Etapa 2: Ejecutar la aplicación con JDK ligero
-FROM eclipse-temurin:17-jdk
+FROM eclipse-temurin:21-jdk
 WORKDIR /app
 
 # Copiar JAR generado
