@@ -16,7 +16,8 @@ FROM eclipse-temurin:21-jdk
 WORKDIR /app
 
 # Copiar JAR generado
-COPY --from=build /app/target/*.jar app.jar
+RUN ls -la /app/target
+COPY --from=build /app/target/*-SNAPSHOT.jar app.jar
 
 # Render asigna el puerto automáticamente
 ENV PORT=8080
