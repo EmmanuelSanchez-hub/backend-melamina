@@ -11,16 +11,18 @@ RUN chmod +x mvnw
 # Compilar con Maven Wrapper
 RUN ./mvnw -q clean package -DskipTests
 
-# Etapa 2: Ejecutar la aplicación con JDK ligero
+# Mostrar contenido de target para saber el nombre del JAR
+RUN ls -la /app/target
+
+
+# Etapa 2: Ejecutar la aplicación
 FROM eclipse-temurin:21-jdk
 WORKDIR /app
 
-# Copiar JAR generado
-RUN ls -la /app/target
-COPY --from=build /app/target/*-SNAPSHOT.jar app.jar
+# Copiar el jar generado
+COPY --from=build /app/target/*.jar /app/app.jar
 
-# Render asigna el puerto automáticamente
 ENV PORT=8080
 EXPOSE 8080
 
-ENTRYPOINT ["java", "-jar", "app.jar"]
+ENTRYPOINT ["java", "-jar", "/app/app.jar"]
